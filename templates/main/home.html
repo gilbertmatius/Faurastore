@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Toko Baju{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-text">
+        <h1>Toko Baju Terlengkap</h1>
+        <p>Diskon hingga 50% untuk koleksi terbaru!</p>
+        <a href="#products" class="btn btn-primary btn-lg">Belanja Sekarang</a>
+    </div>
+</div>
+
+<!-- Product Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Produk Terbaru</h2>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 col-lg-3 mb-4">
+            <div class="card product-card shadow-sm">
+                <img src="{% static 'images/'|add:product.image %}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted">Rp {{ product.price }}</p>
+                    <a href="#" class="btn btn-outline-primary btn-sm w-100">Lihat Detail</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Best Deals Section -->
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Penawaran Terbaik</h2>
+    <div class="row">
+        {% for product in best_deals %}
+        <div class="col-md-4 col-lg-3 mb-4">
+            <div class="card product-card shadow-sm">
+                <img src="{% static 'images/'|add:product.image %}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-danger">Rp {{ product.price }}</p>
+                    <a href="#" class="btn btn-danger btn-sm w-100">Beli Sekarang</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
